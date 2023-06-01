@@ -86,7 +86,9 @@ def import_optional_dependency(name, raise_on_missing=True):
     version = getattr(module, "__version__", None)
     if version is None:
         return module
-
+    
+    """
+    # Issue when intalled using pip in a conda venv
     if Version(version) < Version(dependency.min_version):
         msg = (
             f"CleverCSV requires version '{dependency.min_version}' or newer "
@@ -95,5 +97,6 @@ def import_optional_dependency(name, raise_on_missing=True):
             "dependencies using: pip install clevercsv[full]"
         )
         raise ImportError(msg)
-
+    """
+    
     return module
